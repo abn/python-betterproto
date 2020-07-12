@@ -163,6 +163,14 @@ python-versions = "*"
 version = "0.3.1"
 
 [[package]]
+category = "main"
+description = "A fast pure-python implementation of Enum"
+name = "fast-enum"
+optional = false
+python-versions = "*"
+version = "1.3.0"
+
+[[package]]
 category = "dev"
 description = "A platform independent file lock."
 name = "filelock"
@@ -481,7 +489,7 @@ description = "Thin-wrapper around the mock package for easier use with pytest"
 name = "pytest-mock"
 optional = false
 python-versions = ">=3.5"
-version = "3.1.1"
+version = "3.2.0"
 
 [package.dependencies]
 pytest = ">=2.7"
@@ -637,7 +645,7 @@ testing = ["jaraco.itertools", "func-timeout"]
 compiler = ["black", "jinja2", "protobuf"]
 
 [metadata]
-content-hash = "7a2aa57a3a2b58e70aa05be75bff08272c2f070ecc1872a1c825f228299b82c2"
+content-hash = "673a602187381c1c104e900fffa7426ba0a10e1dad2055c325230fab89ca5c07"
 python-versions = "^3.6"
 
 [metadata.files]
@@ -732,6 +740,10 @@ dataclasses = [
 distlib = [
     {file = "distlib-0.3.1-py2.py3-none-any.whl", hash = "sha256:8c09de2c67b3e7deef7184574fc060ab8a793e7adbb183d942c389c8b13c52fb"},
     {file = "distlib-0.3.1.zip", hash = "sha256:edf6116872c863e1aa9d5bb7cb5e05a022c519a4594dc703843343a9ddd9bff1"},
+]
+fast-enum = [
+    {file = "fast-enum-1.3.0.tar.gz", hash = "sha256:4ea5b8f263eeb295bcaa6b377eec7ae1e3df20754dfbd7ead1a3aa78a8f0fc0e"},
+    {file = "fast_enum-1.3.0-py3-none-any.whl", hash = "sha256:9ea5105e7789f1b805962bdef0f232537a3b5e03d9ae46c53511ad686f0bd88d"},
 ]
 filelock = [
     {file = "filelock-3.0.12-py3-none-any.whl", hash = "sha256:929b7d63ec5b7d6b71b0fa5ac14e030b3f70b75747cef1b10da9b879fef15836"},
@@ -987,8 +999,8 @@ pytest-cov = [
     {file = "pytest_cov-2.10.0-py2.py3-none-any.whl", hash = "sha256:6e6d18092dce6fad667cd7020deed816f858ad3b49d5b5e2b1cc1c97a4dba65c"},
 ]
 pytest-mock = [
-    {file = "pytest-mock-3.1.1.tar.gz", hash = "sha256:636e792f7dd9e2c80657e174c04bf7aa92672350090736d82e97e92ce8f68737"},
-    {file = "pytest_mock-3.1.1-py3-none-any.whl", hash = "sha256:a9fedba70e37acf016238bb2293f2652ce19985ceb245bbd3d7f3e4032667402"},
+    {file = "pytest-mock-3.2.0.tar.gz", hash = "sha256:7122d55505d5ed5a6f3df940ad174b3f606ecae5e9bc379569cdcbd4cd9d2b83"},
+    {file = "pytest_mock-3.2.0-py3-none-any.whl", hash = "sha256:5564c7cd2569b603f8451ec77928083054d8896046830ca763ed68f4112d17c7"},
 ]
 regex = [
     {file = "regex-2020.6.8-cp27-cp27m-win32.whl", hash = "sha256:fbff901c54c22425a5b809b914a3bfaf4b9570eee0e5ce8186ac71eb2025191c"},

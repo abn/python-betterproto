@@ -68,7 +68,7 @@ def test_class_init():
 
 
 def test_enum_as_int_json():
-    class TestEnum(betterproto.Enum):
+    class TestEnum(int, metaclass=betterproto.Enum):
         ZERO = 0
         ONE = 1
 

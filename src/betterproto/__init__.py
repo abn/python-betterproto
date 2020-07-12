@@ -1,5 +1,4 @@
 import dataclasses
-import enum
 import inspect
 import json
 import struct
@@ -8,6 +7,7 @@ import warnings
 from abc import ABC
 from base64 import b64decode, b64encode
 from datetime import datetime, timedelta, timezone
+from fast_enum.fastenum import FastEnum as Enum
 from typing import (
     Any,
     Callable,
@@ -119,7 +119,7 @@ def datetime_default_gen():
 DATETIME_ZERO = datetime_default_gen()
 
 
-class Casing(enum.Enum):
+class Casing(Enum):
     """Casing constants for serialization."""
 
     CAMEL = camel_case
@@ -252,18 +252,6 @@ def map_field(
     return dataclass_field(
         number, TYPE_MAP, map_types=(key_type, value_type), group=group
     )
-
-
-class Enum(enum.IntEnum):
-    """Protocol buffers enumeration base class. Acts like `enum.IntEnum`."""
-
-    @classmethod
-    def from_string(cls, name: str) -> int:
-        """Return the value which corresponds to the string name."""
-        try:
-            return cls.__members__[name]
-        except KeyError as e:
-            raise ValueError(f"Unknown value {name} for enum {cls.__name__}") from e
 
 
 def _pack_fmt(proto_type: str) -> str:
@@ -655,7 +643,10 @@ class Message(ABC):
         return field_cls
 
     def _get_field_default(self, field_name):
-        return self._betterproto.default_gen[field_name]()
+        cls = self._betterproto.default_gen[field_name]
+        if isinstance(cls, type) and type(cls) is Enum:
+            return cls
+        return cls()
 
     @classmethod
     def _get_field_default_gen(cls, field: dataclasses.Field) -> Any:
@@ -909,9 +900,9 @@ class Message(ABC):
                     elif meta.proto_type == TYPE_ENUM:
                         enum_cls = self._betterproto.cls_by_field[field_name]
                         if isinstance(v, list):
-                            v = [enum_cls.from_string(e) for e in v]
+                            v = [getattr(enum_cls, e) for e in v]
                         elif isinstance(v, str):
-                            v = enum_cls.from_string(v)
+                            v = getattr(enum_cls, v)
 
                     if v is not None:
                         setattr(self, field_name, v)

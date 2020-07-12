@@ -7,7 +7,7 @@ from typing import Dict, List
 import betterproto
 
 
-class Syntax(betterproto.Enum):
+class Syntax(int, metaclass=betterproto.Enum):
     """The syntax in which a protocol buffer element is defined."""
 
     # Syntax `proto2`.
@@ -16,7 +16,7 @@ class Syntax(betterproto.Enum):
     SYNTAX_PROTO3 = 1
 
 
-class FieldKind(betterproto.Enum):
+class FieldKind(int, metaclass=betterproto.Enum):
     TYPE_UNKNOWN = 0
     TYPE_DOUBLE = 1
     TYPE_FLOAT = 2
@@ -38,14 +38,14 @@ class FieldKind(betterproto.Enum):
     TYPE_SINT64 = 18
 
 
-class FieldCardinality(betterproto.Enum):
+class FieldCardinality(int, metaclass=betterproto.Enum):
     CARDINALITY_UNKNOWN = 0
     CARDINALITY_OPTIONAL = 1
     CARDINALITY_REQUIRED = 2
     CARDINALITY_REPEATED = 3
 
 
-class FieldDescriptorProtoType(betterproto.Enum):
+class FieldDescriptorProtoType(int, metaclass=betterproto.Enum):
     TYPE_DOUBLE = 1
     TYPE_FLOAT = 2
     TYPE_INT64 = 3
@@ -66,37 +66,37 @@ class FieldDescriptorProtoType(betterproto.Enum):
     TYPE_SINT64 = 18
 
 
-class FieldDescriptorProtoLabel(betterproto.Enum):
+class FieldDescriptorProtoLabel(int, metaclass=betterproto.Enum):
     LABEL_OPTIONAL = 1
     LABEL_REQUIRED = 2
     LABEL_REPEATED = 3
 
 
-class FileOptionsOptimizeMode(betterproto.Enum):
+class FileOptionsOptimizeMode(int, metaclass=betterproto.Enum):
     SPEED = 1
     CODE_SIZE = 2
     LITE_RUNTIME = 3
 
 
-class FieldOptionsCType(betterproto.Enum):
+class FieldOptionsCType(int, metaclass=betterproto.Enum):
     STRING = 0
     CORD = 1
     STRING_PIECE = 2
 
 
-class FieldOptionsJsType(betterproto.Enum):
+class FieldOptionsJsType(int, metaclass=betterproto.Enum):
     JS_NORMAL = 0
     JS_STRING = 1
     JS_NUMBER = 2
 
 
-class MethodOptionsIdempotencyLevel(betterproto.Enum):
+class MethodOptionsIdempotencyLevel(int, metaclass=betterproto.Enum):
     IDEMPOTENCY_UNKNOWN = 0
     NO_SIDE_EFFECTS = 1
     IDEMPOTENT = 2
 
 
-class NullValue(betterproto.Enum):
+class NullValue(int, metaclass=betterproto.Enum):
     """
     `NullValue` is a singleton enumeration to represent the null value for the
     `Value` type union.  The JSON representation for `NullValue` is JSON
